@@ -1,0 +1,42 @@
+<div class="container mt-2 d-flex justify-content-center">
+  <div class="card shadow-lg" style="width: 30rem;">
+    <div class="card-header bg-info text-dark text-center">
+      <h3>User Registration</h3>
+    </div>
+    <div class="card-body">
+      <form [formGroup]="userForm" (ngSubmit)="onSubmit()" class="needs-validation" novalidate>
+        <div class="form-group mb-2">
+          <label for="name" class="form-label">Name <span class="text-danger">*</span></label>
+          <input type="text" class="form-control" id="name" placeholder="Enter your name" formControlName="name" required>
+          <div class="invalid-feedback" *ngIf="userForm.get('name')?.invalid && userForm.get('name')?.touched">Name is required</div>
+        </div>
+        <div class="form-group mb-2">
+          <label for="dob" class="form-label">Date of Birth <span class="text-danger">*</span></label>
+          <input type="datetime-local" class="form-control" id="dob" formControlName="dob" required>
+          <div class="invalid-feedback" *ngIf="userForm.get('dob')?.invalid && userForm.get('dob')?.touched">Date of Birth is required</div>
+        </div>
+        <div class="form-group mb-2">
+          <label for="gender" class="form-label">Gender <span class="text-danger">*</span></label>
+          <select class="form-control" id="gender" formControlName="gender" required>
+            <option disabled value="">Select Gender</option>
+            <option value="male">Male</option>
+            <option value="female">Female</option>
+          </select>
+          <div class="invalid-feedback" *ngIf="userForm.get('gender')?.invalid && userForm.get('gender')?.touched">Gender is required</div>
+        </div>
+        <div class="form-group mb-2">
+          <label for="fatherName" class="form-label">Father's Name <span class="text-danger">*</span></label>
+          <input type="text" class="form-control" id="fatherName" placeholder="Enter your father's name" formControlName="fatherName" required>
+          <div class="invalid-feedback" *ngIf="userForm.get('fatherName')?.invalid && userForm.get('fatherName')?.touched">Father's Name is required</div>
+        </div>
+        <div class="form-group mb-2">
+          <label for="subject" class="form-label">Subject <span class="text-danger">*</span></label>
+          <input type="text" class="form-control" id="subject" placeholder="Enter subject" formControlName="subject" required>
+          <div class="invalid-feedback" *ngIf="userForm.get('subject')?.invalid && userForm.get('subject')?.touched">Subject is required</div>
+        </div>
+        <div *ngIf="!userForm.valid && userForm.touched" class="text-danger mb-2">* indicates required fields</div>
+        <button type="submit" class="btn btn-secondary btn-block mt-3">Register</button>
+      </form>
+    </div>
+  </div>
+</div>

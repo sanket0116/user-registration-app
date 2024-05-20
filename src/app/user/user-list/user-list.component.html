@@ -1,0 +1,53 @@
+<div *ngIf="loading" class="loading-indicator">Loading...</div>
+<div *ngIf="errorMessage" class="error-message">{{ errorMessage }}</div>
+<div *ngIf="!loading && !errorMessage">
+<div class="container mt-2 d-flex justify-content-center">
+  <div class="card shadow-lg" style="width: 100%;">
+    <div class="card-header bg-info text-dark text-center">
+      <h3>User List</h3>
+    </div>
+    <div class="card-body">
+      <div class="row mb-2 align-items-center">
+        <div class="col-auto">
+          <label for="genderFilter" class="form-label mb-0">Filter by Gender</label>
+        </div>
+        <div class="col-sm-3">
+          <select id="genderFilter" class="form-control" (change)="applyGenderFilter($event)">
+            <option value="">All</option>
+            <option value="male">Male</option>
+            <option value="female">Female</option>
+          </select>
+        </div>
+        <div class="col-auto ms-auto">
+          <button class="btn btn-primary" (click)="navigateToRegister()">Register User</button>
+        </div> 
+      </div>
+      <div class="table-responsive">
+        <p-table [value]="filteredUsers" [paginator]="true" [rows]="5" responsiveLayout="scroll">
+          <ng-template pTemplate="header">
+            <tr>
+              <th>Name</th>
+              <th>Date of Birth</th>
+              <th>Gender</th>
+              <th>Father's Name</th>
+              <th>Subject</th>
+              <th>Delete</th>
+            </tr>
+          </ng-template>
+          <ng-template pTemplate="body" let-user>
+            <tr>
+              <td>{{ user.name }}</td>
+              <td>{{ user.dob }}</td>
+              <td>{{ user.gender }}</td>
+              <td>{{ user.fatherName }}</td>
+              <td>{{ user.subject }}</td>
+              <td>
+                <button pButton type="button" icon="pi pi-user-minus" class="p-button-danger m-1" (click)="deleteUser(user)"></button>
+              </td>                                                
+            </tr>
+          </ng-template>
+        </p-table>             
+      </div>
+    </div>
+  </div>
+</div>

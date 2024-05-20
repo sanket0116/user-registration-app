@@ -1,0 +1,21 @@
+.card {
+    width: 100%;
+  }
+  
+  .table {
+    margin-top: 20px;
+  }
+  
+  .table th, .table td {
+    vertical-align: middle;
+  }
+  
+  .card-header {
+    background-color: #17a2b8;
+    color: white;
+  }
+  
+  .table thead th {
+    background-color: #f8f9fa;
+  }
+  
